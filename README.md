@@ -14,6 +14,12 @@
 
 ## Versijų istorija (changelog)
 
+### [v0.3](https://github.com/ToNyHasK/VUObjektinisNO5/releases/tag/v0.3) - (2019-06-11)
+
+**Pridėta**
+
+- Žodžiai suskaidyti į du stulpelius
+
 ### [v0.2.1](https://github.com/ToNyHasK/VUObjektinisNO5/releases/tag/v0.2.1) - (2019-06-11)
 
 **Pridėta**

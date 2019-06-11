@@ -82,25 +82,29 @@ void printResults(std::string text, mapType words, setType url) {
             m = max.second.second;
         }
     }
+    int n = 1;
     for (int i = 2; i <= m; i++) {
         for (auto &elem : words) {
             if (elem.second.second == i) {
-                myfile << elem.first << ":" << " " << "Word occurred: " << elem.second.second << " times" << "\n";
-                std::cout << elem.first << " " << elem.second.second << "\n";
+                myfile << elem.first << " : "<< elem.second.second << " | ";
+                int eil = 0;
                 for (auto it = elem.second.first.begin(); it != elem.second.first.end(); ++it) {
-                    myfile << "Line: " << (*it) << " ";
-                    std::cout << (*it) << " ";
+                    myfile << (*it) << " ";
+                    eil++;
                 }
-                myfile << "\n";
-                std::cout << "\n";
+                if (n%2 != 0) {
+                    myfile << std::right << std::setw(35-eil);
+                }
+                if (n%2 == 0)
+                    myfile << std::endl;
+
+                    n++;
             }
         }
     }
     myfile << "URL address: " << "\n";
-    std::cout << "URL address: " << "\n";
     for (std::set<std::string>::iterator it = url.begin(); it != url.end(); ++it) {
         myfile << (*it) << std::endl;
-        std::cout << (*it) << std::endl;
     }
     myfile.close();
 }
