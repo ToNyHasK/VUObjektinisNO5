@@ -22,7 +22,6 @@
 
 - Nurodyta tik vieną kartą
 
-
 ### [v0.2](https://github.com/ToNyHasK/VUObjektinisNO5/releases/tag/v0.2) - (2019-06-11)
 
 **Pridėta**
