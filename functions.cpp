@@ -75,16 +75,25 @@ void printResults(std::string text, mapType words, setType url) {
     std::ofstream myfile;
     myfile.open("cross-ref.txt");
     processText(text, words, url);
-    for (auto& elem : words) {
-        if (elem.second.second > 1) {
-            myfile << elem.first << ":" << " " <<"Word occurred: "<< elem.second.second <<" times" <<"\n";
-            std::cout << elem.first << " " << elem.second.second << "\n";
-            for (auto it = elem.second.first.begin(); it != elem.second.first.end(); ++it) {
-                myfile <<"Line: "<< (*it) << " ";
-                std::cout << (*it) << " ";
+    int m = 0; // max words
+    // ieskom max words
+    for (auto& max : words) {
+        if (m < max.second.second ) {
+            m = max.second.second;
+        }
+    }
+    for (int i = 2; i <= m; i++) {
+        for (auto &elem : words) {
+            if (elem.second.second == i) {
+                myfile << elem.first << ":" << " " << "Word occurred: " << elem.second.second << " times" << "\n";
+                std::cout << elem.first << " " << elem.second.second << "\n";
+                for (auto it = elem.second.first.begin(); it != elem.second.first.end(); ++it) {
+                    myfile << "Line: " << (*it) << " ";
+                    std::cout << (*it) << " ";
+                }
+                myfile << "\n";
+                std::cout << "\n";
             }
-            myfile << "\n";
-            std::cout << "\n";
         }
     }
     myfile << "URL address: " << "\n";
