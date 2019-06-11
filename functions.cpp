@@ -68,23 +68,31 @@ void processText(std::string& text, mapType& words, setType& url) {
         }
         rowCounter++;
     }
-
+    file.close();
 }
 void printResults(std::string text, mapType words, setType url) {
     // Printing results
+    std::ofstream myfile;
+    myfile.open("cross-ref.txt");
     processText(text, words, url);
     for (auto& elem : words) {
         if (elem.second.second > 1) {
+            myfile << elem.first << ":" << " " <<"Word occurred: "<< elem.second.second <<" times" <<"\n";
             std::cout << elem.first << " " << elem.second.second << "\n";
             for (auto it = elem.second.first.begin(); it != elem.second.first.end(); ++it) {
+                myfile <<"Line: "<< (*it) << " ";
                 std::cout << (*it) << " ";
             }
+            myfile << "\n";
             std::cout << "\n";
         }
     }
+    myfile << "URL address: " << "\n";
     std::cout << "URL address: " << "\n";
     for (std::set<std::string>::iterator it = url.begin(); it != url.end(); ++it) {
+        myfile << (*it) << std::endl;
         std::cout << (*it) << std::endl;
     }
+    myfile.close();
 }
 
